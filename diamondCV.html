@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text"  id="userinput" placeholder="请输入" />
+		<button onclick="cal()" style="width:100px;height:30px;">确定</button>
+		<div id="showData" style="width:500px;height:500px;"></div>
+		<script>
+			function cal(a){
+				a = parseInt(document.getElementById("userinput").value)||a;
+				var x = '□';
+				var y = '▲';
+				var t_arr = [];
+				var tlen = (a-1)*2+1;
+				var reduce = a;
+				var t_arr = []
+				for(var i=0;i<a;i++){
+					var str1 = '';
+					for(var j=1;j<tlen+1;j++){
+						if(j == a-i||j == a+i){
+							str1 += '▲';
+						}else{
+							str1 += '□';
+						}
+					}
+					t_arr.push(str1);
+				}
+				var t_arr2 = JSON.parse(JSON.stringify(t_arr)).reverse();
+				t_arr2.shift();
+				var t_arr3 = t_arr.concat(t_arr2);
+				var divhtml = "";
+				t_arr3.forEach(cols=>{
+					console.log(cols)
+					divhtml = divhtml + cols +'<br/>' ;
+				})
+				document.getElementById("showData").innerHTML = divhtml;
+			}
+			//cal(4);
+		</script>
+	</body>
+</html>
